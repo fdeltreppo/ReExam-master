@@ -37,12 +37,13 @@
             setup: function() {
                 console.log( 'setup' );
             },
-
+            
+            // Here I changed the thickness of the stroke
             update: function() {
-                radius = 2 + abs( sin( this.millis * 0.003 ) * 50 );
+                radius = 2 + abs( sin( this.millis * 0.003 ) * 20 );
             },
 
-            // Event handlers
+            // Event handlers - if the space bar is pressed the canvas is cleared
 
             keydown: function() {
                 if ( this.keys.C ) this.clear();
@@ -54,12 +55,14 @@
             // use the 0th touch element and you get wider device support for free.
             touchmove: function() {
 
+                //Inside for loop you can easily change the style of the cursor effect.
+
                 for ( var i = this.touches.length - 1, touch; i >= 0; i-- ) {
 
                     touch = this.touches[i];
-
-                    this.lineCap = 'round';
-                    this.lineJoin = 'round';
+                        //Here I changed the cursor style from round to square
+                    this.lineCap = 'square';
+                    this.lineJoin = 'square';
                     this.fillStyle = this.strokeStyle = COLOURS[ i % COLOURS.length ];
                     this.lineWidth = radius;
 
